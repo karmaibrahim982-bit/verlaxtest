@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veralex Business Solutions — تأسيس الشركات في السعودية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --c-900:#07592E;
+    --c-700:#0E7A3E;
+    --c-600:#346D51;
+    --c-500:#4F8A63;
+    --c-400:#77AA58;
+    --c-300:#9AC178;
+    --c-200:#A9CE90;
+    --c-100:#DCEAD0;
+    --c-50:#F1F6EC;
+    --paper:#FBFAF6;
+    --paper-2:#F4F1E8;
+    --ink:#0E1F16;
+    --ink-soft:#3C463F;
+    --line:rgba(14,31,22,0.12);
+    --line-strong:rgba(14,31,22,0.22);
+    --shadow-soft: 0 20px 50px -25px rgba(7,89,46,0.35);
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --maxw: 1180px;
+    font-size: 16px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Tajawal', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:13px; font-weight:700; letter-spacing:.3px;
+    color:var(--c-700);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:""; display:block; width:22px; height:2px; background:var(--c-400); border-radius:2px;
+  }
+  h1,h2,h3{font-weight:800; color:var(--ink); letter-spacing:-0.02em;}
+  .section{padding:108px 0;}
+  .section-tight{padding:88px 0;}
+  .center{text-align:center;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:16px 30px;
+    border-radius:100px;
+    font-weight:700; font-size:15.5px;
+    cursor:pointer; border:none;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--c-900); color:#fff;
+    box-shadow: var(--shadow-soft);
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 26px 55px -22px rgba(7,89,46,0.5);}
+  .btn-ghost{
+    background:transparent; color:var(--ink); border:1.5px solid var(--line-strong);
+  }
+  .btn-ghost:hover{border-color:var(--c-700); color:var(--c-900); background:var(--c-50);}
+  .btn-light{
+    background:#fff; color:var(--c-900);
+  }
+  .btn-light:hover{transform:translateY(-3px);}
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,250,246,0.85);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .logo-mark{display:flex; align-items:center; gap:10px;}
+  .logo-blades{
+    width:38px; height:38px; border-radius:11px;
+    background:linear-gradient(135deg, var(--c-400), var(--c-900));
+    position:relative; overflow:hidden; flex-shrink:0;
+  }
+  .logo-blades svg{position:absolute; inset:0; width:100%; height:100%;}
+  .logo-text{display:flex; flex-direction:column; line-height:1.1;}
+  .logo-text .name{font-size:19px; font-weight:800; color:var(--ink);}
+  .logo-text .sub{font-size:10.5px; font-weight:500; color:var(--ink-soft); letter-spacing:.4px;}
+  .nav-links{display:flex; align-items:center; gap:38px;}
+  .nav-links a{font-size:15px; font-weight:500; color:var(--ink-soft); position:relative; padding:4px 0;}
+  .nav-links a:hover{color:var(--c-900);}
+  .nav-cta{display:flex; align-items:center; gap:14px;}
+  .nav-cta .btn{padding:12px 24px; font-size:14.5px;}
+  .nav-toggle{display:none;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+    color:#fff;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background-image:
+      linear-gradient(180deg, rgba(7,89,46,0.55) 0%, rgba(7,89,46,0.78) 55%, var(--c-900) 100%),
+      linear-gradient(100deg, rgba(7,89,46,0.92) 0%, rgba(52,109,81,0.55) 45%, rgba(169,206,144,0.25) 100%),
+      url('REPLACE_WITH_YOUR_HERO_PHOTO.jpg');
+    background-size:cover;
+    background-position:center;
+  }
+  .hero-bg-fallback{
+    position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(1100px 600px at 80% 0%, rgba(169,206,144,0.35), transparent 60%),
+      linear-gradient(125deg, var(--c-900) 0%, var(--c-600) 55%, var(--c-400) 130%);
+  }
+  .hero-bg-fallback .blade{
+    position:absolute; bottom:0; width:18px; border-radius:9px 9px 0 0;
+    background:rgba(255,255,255,0.16);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    max-width:var(--maxw); margin:0 auto;
+    padding:160px 32px 64px;
+    width:100%;
+  }
+  .hero-top-row{
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    flex-wrap:wrap; margin-bottom:28px;
+  }
+  .hero h1{
+    font-size:clamp(34px, 4.4vw, 56px);
+    line-height:1.14;
+    margin-bottom:22px;
+    color:#fff;
+    max-width:780px;
+  }
+  .hero h1 .accent{color:var(--c-200);}
+  .hero p.lead{
+    font-size:17.5px; color:rgba(255,255,255,0.86); max-width:560px; margin-bottom:32px;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px;}
+
+  /* floating review badge */
+  .review-badge{
+    display:inline-flex; align-items:center; gap:10px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.22);
+    border-radius:100px;
+    padding:8px 16px 8px 8px;
+  }
+  .review-badge .stars{color:#FFC94D; font-size:13px; letter-spacing:1px;}
+  .review-badge .stars-icon{
+    width:26px; height:26px; border-radius:50%;
+    background:#fff; color:var(--c-900);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:800; flex-shrink:0;
+  }
+  .review-badge .txt{font-size:12.5px; color:rgba(255,255,255,0.85); line-height:1.3;}
+  .review-badge .txt b{color:#fff; font-size:13.5px;}
+
+  /* floating cards row */
+  .hero-cards{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:rgba(255,255,255,0.14);
+    border-top:1px solid rgba(255,255,255,0.18);
+  }
+  .hero-card{
+    background:rgba(13,40,25,0.55);
+    backdrop-filter:blur(14px);
+    padding:26px 28px;
+  }
+  .hero-card .n{font-size:clamp(24px,2.4vw,32px); font-weight:800; color:#fff; line-height:1; margin-bottom:6px; display:flex; align-items:baseline; gap:6px;}
+  .hero-card .n .plus{color:var(--c-200); font-size:0.55em;}
+  .hero-card .l{font-size:12.5px; color:rgba(255,255,255,0.72);}
+
+  /* client logos strip under hero */
+  .logos-strip{background:#fff; border-bottom:1px solid var(--line);}
+  .logos-row{
+    display:flex; align-items:center; justify-content:space-between; gap:40px;
+    padding:26px 32px; max-width:var(--maxw); margin:0 auto;
+    flex-wrap:wrap;
+  }
+  .logos-row .logos-label{font-size:12.5px; color:var(--ink-soft); font-weight:700; flex-shrink:0;}
+  .logos-row .logos-marks{display:flex; align-items:center; gap:34px; flex-wrap:wrap; opacity:.55;}
+  .logos-row .logos-marks span{
+    font-size:14px; font-weight:800; color:var(--ink-soft); letter-spacing:.5px;
+    border:1.5px dashed var(--line-strong); border-radius:8px; padding:6px 14px;
+  }
+
+  /* trust strip */
+  .trust-strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:#fff;
+  }
+  .trust-grid{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .trust-item{
+    padding:34px 32px;
+    display:flex; align-items:flex-start; gap:16px;
+    border-right:1px solid var(--line);
+  }
+  .trust-item:last-child{border-right:none;}
+  .trust-icon{
+    width:42px; height:42px; border-radius:12px; flex-shrink:0;
+    background:var(--c-50); color:var(--c-700);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .trust-icon svg{width:20px; height:20px;}
+  .trust-item h3{font-size:15.5px; margin-bottom:4px;}
+  .trust-item p{font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
+
+  /* ============ ABOUT / TRUSTED ============ */
+  .about{
+    background:var(--paper);
+  }
+  .about-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;
+  }
+  .about h2{font-size:clamp(28px,3vw,38px); line-height:1.25; margin-bottom:20px;}
+  .about p{font-size:16.5px; color:var(--ink-soft);}
+  .about-visual{
+    position:relative; border-radius:var(--radius-lg);
+    background:var(--c-900);
+    height:340px;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .about-visual .blades-row{display:flex; align-items:flex-end; gap:8px; height:60%;}
+  .about-visual .blades-row .blade{width:10px;}
+
+  /* ============ STATS ============ */
+  .stats{background:var(--c-900); color:#fff; position:relative; overflow:hidden;}
+  .stats::before{
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(700px 300px at 10% 0%, rgba(169,206,144,0.18), transparent 60%);
+  }
+  .stats-head{max-width:560px; margin-bottom:56px; position:relative;}
+  .stats .eyebrow{color:var(--c-200);}
+  .stats .eyebrow::before{background:var(--c-200);}
+  .stats h2{color:#fff; font-size:clamp(26px,2.8vw,34px); line-height:1.3;}
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:rgba(255,255,255,0.12);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    position:relative;
+  }
+  .stat-card{
+    background:var(--c-900);
+    padding:36px 28px;
+    text-align:center;
+  }
+  .stat-card .n{
+    font-size:clamp(32px,3.4vw,44px); font-weight:800; color:#fff; line-height:1;
+    margin-bottom:10px;
+  }
+  .stat-card .l{font-size:13.5px; color:var(--c-200);}
+
+  /* ============ SERVICES ============ */
+  .services-head{display:flex; align-items:flex-end; justify-content:space-between; gap:40px; margin-bottom:56px;}
+  .services-head h2{font-size:clamp(28px,3vw,38px); max-width:480px; line-height:1.25;}
+  .services-head p{font-size:16px; color:var(--ink-soft); max-width:380px;}
+  .services-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  .service-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:32px 28px;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    position:relative;
+  }
+  .service-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 30px 50px -30px rgba(7,89,46,0.28);
+    border-color:transparent;
+  }
+  .service-num{
+    font-size:13px; font-weight:700; color:var(--c-300);
+    margin-bottom:18px; display:block;
+  }
+  .service-icon{
+    width:48px; height:48px; border-radius:14px;
+    background:var(--c-50); color:var(--c-700);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:20px;
+  }
+  .service-icon svg{width:23px; height:23px;}
+  .service-card h3{font-size:18px; margin-bottom:10px;}
+  .service-card p{font-size:14.5px; color:var(--ink-soft); line-height:1.6;}
+
+  /* ============ WHY ============ */
+  .why{background:var(--paper-2);}
+  .why-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:56px;
+  }
+  .why-card{padding:0;}
+  .why-num{
+    font-size:14px; font-weight:800; color:var(--c-600);
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .why-num .bar{width:24px; height:2px; background:var(--c-400); display:block;}
+  .why-card h3{font-size:17px; margin-bottom:10px; line-height:1.4;}
+  .why-card p{font-size:14px; color:var(--ink-soft); line-height:1.65;}
+
+  /* ============ PROCESS ============ */
+  .process-head{max-width:600px; margin-bottom:64px;}
+  .process-head h2{font-size:clamp(28px,3vw,38px); line-height:1.25;}
+  .process-rail{
+    position:relative;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+  }
+  .process-rail::before{
+    content:""; position:absolute; top:27px; left:12.5%; right:12.5%; height:2px;
+    background:repeating-linear-gradient(to left, var(--line-strong) 0 8px, transparent 8px 16px);
+    z-index:0;
+  }
+  .process-step{position:relative; z-index:1;}
+  .process-step .step-circle{
+    width:56px; height:56px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--c-900);
+    color:var(--c-900); font-weight:800; font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:22px;
+  }
+  .process-step:nth-child(1) .step-circle{background:var(--c-900); color:#fff;}
+  .process-step h3{font-size:16.5px; margin-bottom:8px;}
+  .process-step p{font-size:14px; color:var(--ink-soft); line-height:1.6;}
+
+  /* ============ TESTIMONIALS placeholder ============ */
+  .testi-head{margin-bottom:50px; max-width:600px;}
+  .testi-head h2{font-size:clamp(26px,2.8vw,34px); line-height:1.3; margin-bottom:14px;}
+  .testi-head p{font-size:16px; color:var(--ink-soft);}
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .testi-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:28px;
+  }
+  .testi-quote{font-size:14.5px; color:var(--ink); line-height:1.75; margin-bottom:22px;}
+  .testi-person{display:flex; align-items:center; gap:12px;}
+  .testi-avatar{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--c-100); color:var(--c-800, var(--c-900));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:13px; flex-shrink:0;
+  }
+  .testi-person .pname{font-size:14px; font-weight:700;}
+  .testi-person .prole{font-size:12.5px; color:var(--ink-soft);}
+  .testi-placeholder-note{
+    margin-top:28px; font-size:13px; color:var(--ink-soft);
+    background:var(--c-50); border:1px dashed var(--c-300);
+    border-radius:12px; padding:14px 18px; display:flex; align-items:center; gap:10px;
+  }
+
+  /* ============ FAQ ============ */
+  .faq{background:var(--paper-2);}
+  .faq-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:60px;}
+  .faq-head h2{font-size:clamp(26px,2.8vw,34px); line-height:1.3; margin-bottom:16px;}
+  .faq-head p{font-size:15.5px; color:var(--ink-soft); margin-bottom:28px;}
+  .faq-list{display:flex; flex-direction:column; gap:12px;}
+  .faq-item{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-md);
+    overflow:hidden;
+  }
+  .faq-q{
+    width:100%; text-align:right; background:none; border:none; cursor:pointer;
+    padding:20px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    font-family:inherit; font-size:15.5px; font-weight:700; color:var(--ink);
+  }
+  .faq-q .plus{
+    width:26px; height:26px; border-radius:50%; flex-shrink:0;
+    background:var(--c-50); color:var(--c-700);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .3s ease, background .3s ease;
+    font-size:16px; font-weight:400;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg); background:var(--c-900); color:#fff;}
+  .faq-a{
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+  }
+  .faq-a-inner{padding:0 22px 20px; font-size:14.5px; color:var(--ink-soft); line-height:1.7;}
+
+  /* ============ FINAL CTA ============ */
+  .final-cta{
+    position:relative;
+    background:linear-gradient(135deg, var(--c-900) 0%, var(--c-600) 60%, var(--c-400) 120%);
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity:.35;
+  }
+  .final-cta-inner{
+    position:relative; text-align:center; max-width:680px; margin:0 auto;
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .final-cta h2{color:#fff; font-size:clamp(28px,3.4vw,42px); line-height:1.25; margin-bottom:18px;}
+  .final-cta p{color:rgba(255,255,255,0.88); font-size:17px; margin-bottom:36px; max-width:540px;}
+  .final-blades{display:flex; gap:8px; align-items:flex-end; height:34px; margin-bottom:28px;}
+  .final-blades .blade{width:6px; background:rgba(255,255,255,0.9);}
+
+  /* ============ FOOTER ============ */
+  footer{background:#0B2618; color:rgba(255,255,255,0.85); padding-top:80px;}
+  .footer-top{
+    display:grid; grid-template-columns:1.4fr 0.8fr 0.8fr 1fr; gap:48px;
+    padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand .logo-text .name{color:#fff;}
+  .footer-brand .logo-text .sub{color:rgba(255,255,255,0.55);}
+  .footer-brand p{font-size:14px; color:rgba(255,255,255,0.62); margin-top:18px; max-width:280px; line-height:1.7;}
+  .footer-social{display:flex; gap:10px; margin-top:22px;}
+  .footer-social a{
+    width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,0.18);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .footer-social a svg{width:16px; height:16px;}
+  .footer-col h4{font-size:14px; font-weight:700; color:#fff; margin-bottom:18px;}
+  .footer-col ul{display:flex; flex-direction:column; gap:12px;}
+  .footer-col a{font-size:14px; color:rgba(255,255,255,0.65);}
+  .footer-col a:hover{color:#fff;}
+  .footer-contact p{font-size:14px; color:rgba(255,255,255,0.65); margin-bottom:10px; display:flex; align-items:center; gap:8px;}
+  .footer-bottom{
+    padding:26px 0; display:flex; align-items:center; justify-content:space-between;
+    font-size:13px; color:rgba(255,255,255,0.5);
+  }
+  .footer-bottom a{color:rgba(255,255,255,0.5);}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .no-js .reveal, .reveal{animation: fallback-show 0.01s 1.2s forwards;}
+  @keyframes fallback-show{to{opacity:1; transform:none;}}
+
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .hero-content{padding:140px 20px 0;}
+    .hero-cards{grid-template-columns:repeat(2,1fr);}
+    .logos-row{justify-content:center; text-align:center;}
+    .trust-grid{grid-template-columns:1fr;}
+    .trust-item{border-left:none; border-bottom:1px solid var(--line);}
+    .trust-item:last-child{border-bottom:none;}
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .services-head{flex-direction:column; align-items:flex-start;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .process-rail{grid-template-columns:1fr 1fr; row-gap:40px;}
+    .process-rail::before{display:none;}
+    .testi-grid{grid-template-columns:1fr;}
+    .faq-grid{grid-template-columns:1fr; gap:30px;}
+    .footer-top{grid-template-columns:1fr 1fr; gap:36px;}
+  }
+  @media (max-width:600px){
+    .wrap, .nav{padding-left:20px; padding-right:20px;}
+    .section{padding:72px 0;}
+    .services-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .process-rail{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column; gap:10px; text-align:center;}
+    .hero-cards{grid-template-columns:1fr 1fr;}
+    .hero-ctas{flex-direction:column; align-items:stretch;}
+    .hero-ctas .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo-mark">
+      <div class="logo-blades">
+        <svg viewBox="0 0 38 38" fill="none"><rect x="9" y="14" width="3.4" height="16" rx="1.7" fill="rgba(255,255,255,.65)"/><rect x="15" y="8" width="3.4" height="22" rx="1.7" fill="#fff"/><rect x="21" y="11" width="3.4" height="19" rx="1.7" fill="rgba(255,255,255,.85)"/></svg>
+      </div>
+      <div class="logo-text">
+        <span class="name">veralex</span>
+        <span class="sub">BUSINESS SOLUTIONS</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#home">الرئيسية</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#about">من نحن</a>
+      <a href="#faq">الأسئلة الشائعة</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">ابدأ شركتك مع Veralex</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg-fallback">
+    <div class="blade" style="right:6%; height:55%; width:22px;"></div>
+    <div class="blade" style="right:14%; height:85%; width:22px;"></div>
+    <div class="blade" style="right:22%; height:40%; width:22px;"></div>
+    <div class="blade" style="right:30%; height:70%; width:22px;"></div>
+    <div class="blade" style="right:38%; height:50%; width:22px;"></div>
+  </div>
+  <!-- لاستخدام صورة خلفية حقيقية: شيل كلاس hero-bg-fallback من الديف اللي فوق، وفعّل الديف ده بعد ما تحط رابط صورتك مكان REPLACE_WITH_YOUR_HERO_PHOTO.jpg في CSS -->
+  <!-- <div class="hero-bg"></div> -->
+
+  <div class="hero-content">
+    <div class="hero-top-row reveal in">
+      <div class="eyebrow" style="color:var(--c-200);">Veralex Business Solutions</div>
+      <div class="review-badge">
+        <div class="stars-icon">★</div>
+        <div class="txt"><b>4.9/5</b> تقييم العملاء على جوجل</div>
+      </div>
+    </div>
+
+    <h1 class="reveal in">ابدأ شركتك في <span class="accent">السعودية</span> بثقة ووضوح</h1>
+    <p class="lead reveal in">نساعد رواد الأعمال والمستثمرين من مختلف الجنسيات على تأسيس شركاتهم في المملكة العربية السعودية، واستخراج التراخيص، وإدارة الإجراءات الحكومية والتجارية بكفاءة وسرعة.</p>
+    <div class="hero-ctas reveal in">
+      <a href="#contact" class="btn btn-light">احجز استشارة مجانية</a>
+      <a href="#services" class="btn btn-ghost" style="border-color:rgba(255,255,255,0.4); color:#fff;">ابدأ إجراءات التأسيس</a>
+    </div>
+  </div>
+
+  <div class="hero-cards reveal in">
+    <div class="hero-card">
+      <div class="n">150<span class="plus">+</span></div>
+      <div class="l">دولة مدعومة حول العالم</div>
+    </div>
+    <div class="hero-card">
+      <div class="n">100<span class="plus">%</span></div>
+      <div class="l">إجراءات أونلاين بالكامل</div>
+    </div>
+    <div class="hero-card">
+      <div class="n">0<span class="plus">+</span></div>
+      <div class="l">شركة تأسست بنجاح</div>
+    </div>
+    <div class="hero-card">
+      <div class="n">0<span class="plus"> ساعة</span></div>
+      <div class="l">متوسط وقت الاستجابة</div>
+    </div>
+  </div>
+</section>
+
+<div class="logos-strip">
+  <div class="logos-row reveal in">
+    <span class="logos-label">موثوق به من عملاء في قطاعات متعددة</span>
+    <div class="logos-marks">
+      <span>عميل 01</span>
+      <span>عميل 02</span>
+      <span>عميل 03</span>
+      <span>عميل 04</span>
+      <span>عميل 05</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="trust-strip">
+    <div class="trust-grid">
+      <div class="trust-item reveal">
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7l-9-5Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div><h3>100% عبر الإنترنت</h3><p>أكمل إجراءات تأسيس شركتك في السعودية من أي مكان، بدون أوراق أو زيارات مكاتب.</p></div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+        <div><h3>دعم نظامي وقانوني</h3><p>متابعة كاملة لمتطلبات الجهات الحكومية لضمان توافق شركتك مع الأنظمة السعودية.</p></div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div><h3>خبرة بالسوق السعودي</h3><p>فهم عميق لإجراءات الاستثمار والتراخيص داخل المملكة لمختلف الأنشطة.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow">Veralex Business Solutions</div>
+      <h2>شريكك في رحلة تأسيس الأعمال داخل المملكة</h2>
+      <p>في Veralex Business Solutions نقدم حلولاً متكاملة تساعد المستثمرين والشركات على الانطلاق في السوق السعودي بأقل تعقيد وأعلى مستوى من الاحترافية. من دراسة احتياجاتك وحتى استكمال جميع الإجراءات النظامية، نكون إلى جانبك في كل خطوة.</p>
+    </div>
+    <div class="about-visual reveal">
+      <div class="blades-row">
+        <div class="blade" style="height:35%"></div>
+        <div class="blade" style="height:55%"></div>
+        <div class="blade" style="height:80%"></div>
+        <div class="blade" style="height:50%"></div>
+        <div class="blade" style="height:70%"></div>
+        <div class="blade" style="height:40%"></div>
+        <div class="blade" style="height:62%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap section-tight">
+    <div class="stats-head reveal">
+      <div class="eyebrow">تأثيرنا بالأرقام</div>
+      <h2>نفخر بالأرقام التي تمثل التزامنا بنجاح عملائنا ونمو استثماراتهم</h2>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-card"><div class="n">0K+</div><div class="l">الشركات المؤسَّسة</div></div>
+      <div class="stat-card"><div class="n">0%</div><div class="l">معدل رضا العملاء</div></div>
+      <div class="stat-card"><div class="n">0 ساعة</div><div class="l">متوسط وقت الاستجابة</div></div>
+      <div class="stat-card"><div class="n">0+</div><div class="l">الأنشطة والقطاعات المدعومة</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="services-head reveal">
+      <div>
+        <div class="eyebrow">خدماتنا</div>
+        <h2>حلول متكاملة لتأسيس وإدارة أعمالك في السعودية</h2>
+      </div>
+      <p>كل ما تحتاجه من الاستشارة الأولى وحتى إطلاق نشاطك التجاري، تحت سقف واحد.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h.01M15 17h.01"/></svg></div>
+        <h3>تأسيس الشركات</h3>
+        <p>تأسيس الشركات للمستثمرين المحليين والأجانب وفق الأنظمة السعودية وبما يتناسب مع طبيعة النشاط وأهداف النمو.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">02</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.962-.59 3.42 3.42 0 0 1 4.406 0 3.42 3.42 0 0 0 1.962.59 3.42 3.42 0 0 1 3.118 3.118 3.42 3.42 0 0 0 .59 1.962 3.42 3.42 0 0 1 0 4.406 3.42 3.42 0 0 0-.59 1.962 3.42 3.42 0 0 1-3.118 3.118 3.42 3.42 0 0 0-1.962.59 3.42 3.42 0 0 1-4.406 0 3.42 3.42 0 0 0-1.962-.59 3.42 3.42 0 0 1-3.118-3.118 3.42 3.42 0 0 0-.59-1.962 3.42 3.42 0 0 1 0-4.406 3.42 3.42 0 0 0 .59-1.962 3.42 3.42 0 0 1 3.118-3.118Z"/></svg></div>
+        <h3>التراخيص والاستثمار</h3>
+        <p>إصدار وتجديد التراخيص التجارية والاستثمارية ومتابعة كافة الإجراءات مع الجهات المختصة.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">03</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5 12 3l9 6.5M5 9v10h14V9M9 21v-6h6v6"/></svg></div>
+        <h3>خدمات وزارة الاستثمار</h3>
+        <p>مساندة المستثمرين في الحصول على التراخيص الاستثمارية وتجهيز الملفات والمتطلبات النظامية.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">04</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11h18M5 11l1.5-6h11L19 11M6 11v9h12v-9M9.5 15h5"/></svg></div>
+        <h3>تسجيل العلامات التجارية</h3>
+        <p>حماية الهوية التجارية لعلامتك وتسجيلها رسميًا داخل المملكة.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">05</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 14h.01M11 14h4"/></svg></div>
+        <h3>فتح الحسابات البنكية</h3>
+        <p>تجهيز المستندات اللازمة وتقديم الدعم خلال إجراءات فتح الحسابات البنكية للشركات.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">06</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.5 3.7 5.6 3.7 9s-1.3 6.5-3.7 9c-2.4-2.5-3.7-5.6-3.7-9S9.6 5.5 12 3Z"/></svg></div>
+        <h3>العلاقات الحكومية</h3>
+        <p>إدارة ومتابعة المعاملات الحكومية والتجارية لتوفير الوقت وتسريع الإنجاز.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section why">
+  <div class="wrap">
+    <div class="reveal" style="max-width:600px">
+      <div class="eyebrow">لماذا Veralex</div>
+      <h2 style="font-size:clamp(28px,3vw,38px); line-height:1.25;">لماذا تختار Veralex؟</h2>
+      <p style="font-size:16px; color:var(--ink-soft); margin-top:14px;">المبادئ التي توجه كل ما نقدمه لعملائنا في رحلة تأسيس أعمالهم.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num"><span class="bar"></span>01</div>
+        <h3>خبرة بالسوق السعودي</h3>
+        <p>فهم عميق للأنظمة والإجراءات ومتطلبات الاستثمار داخل المملكة.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num"><span class="bar"></span>02</div>
+        <h3>حلول متكاملة</h3>
+        <p>خدمات شاملة من التأسيس وحتى تشغيل الأعمال.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num"><span class="bar"></span>03</div>
+        <h3>سرعة الإنجاز</h3>
+        <p>متابعة دقيقة لكل خطوة لتقليل التأخير وتبسيط الإجراءات.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num"><span class="bar"></span>04</div>
+        <h3>دعم احترافي</h3>
+        <p>فريق متخصص يرافقك طوال رحلة تأسيس وتطوير أعمالك.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="process-head reveal">
+      <div class="eyebrow">خطوات العمل</div>
+      <h2>كيف نعمل؟</h2>
+    </div>
+    <div class="process-rail">
+      <div class="process-step reveal">
+        <div class="step-circle">01</div>
+        <h3>استشارة أولية</h3>
+        <p>نفهم نشاطك وأهدافك الاستثمارية.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-circle">02</div>
+        <h3>إعداد الملف</h3>
+        <p>تجهيز المستندات والمتطلبات اللازمة.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-circle">03</div>
+        <h3>تنفيذ الإجراءات</h3>
+        <p>متابعة الطلبات لدى الجهات المختصة.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-circle">04</div>
+        <h3>إطلاق النشاط</h3>
+        <p>استلام التراخيص وبدء ممارسة الأعمال.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="testi-head reveal">
+      <div class="eyebrow">آراء عملائنا</div>
+      <h2>ماذا يقول عملاؤنا</h2>
+      <p>موثوق بنا من قبل رواد الأعمال والمستثمرين الراغبين في تأسيس أعمالهم بالسعودية.</p>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <p class="testi-quote">"كل خطوة كانت واضحة من البداية، والفريق كان متابع معايا أول بأول لحد ما خلصت كل الإجراءات."</p>
+        <div class="testi-person"><div class="testi-avatar">XX</div><div><div class="pname">اسم العميل</div><div class="prole">اسم الشركة</div></div></div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"الدعم القانوني وفر علينا وقت كبير، وكل الإجراءات الحكومية اتعملت بسرعة وبدون تعقيد."</p>
+        <div class="testi-person"><div class="testi-avatar">XX</div><div><div class="pname">اسم العميل</div><div class="prole">اسم الشركة</div></div></div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"تجربة احترافية من أول استشارة لحد استلام التراخيص. أنصح بيهم لأي حد عايز يبدأ في السعودية."</p>
+        <div class="testi-person"><div class="testi-avatar">XX</div><div><div class="pname">اسم العميل</div><div class="prole">اسم الشركة</div></div></div>
+      </div>
+    </div>
+    <div class="testi-placeholder-note reveal">
+      هذا القسم placeholder بنفس فورمات أبشر — يُستبدل بشهادات عملاء حقيقية فور توفرها.
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-head reveal">
+      <div class="eyebrow">الأسئلة الشائعة</div>
+      <h2>الأسئلة الشائعة حول تأسيس الشركات في السعودية</h2>
+      <p>ابحث عن إجابات للأسئلة الشائعة حول تأسيس الشركات في المملكة العربية السعودية مع Veralex.</p>
+      <a href="#contact" class="btn btn-ghost">لم تجد إجابتك؟ تواصل معنا</a>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">هل أحتاج إلى شريك سعودي لتأسيس شركتي؟ <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">لا، يمكنك تأسيس شركة بملكية أجنبية 100% من خلال رخصة الاستثمار، دون الحاجة إلى شريك سعودي.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">ما هي رخصة الاستثمار وكيف أحصل عليها؟ <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">هي الترخيص الذي يتيح للمستثمر الأجنبي ممارسة النشاط التجاري داخل المملكة، ونساعدك في إعداد الملف وتقديمه للجهات المختصة.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">كم تستغرق إجراءات تأسيس الشركة في السعودية؟ <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">تختلف المدة حسب نوع النشاط والكيان القانوني، وفريقنا يوضح لك جدولًا زمنيًا واقعيًا منذ الاستشارة الأولى.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">هل يمكنني إدارة شركتي من خارج المملكة؟ <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">نعم، يمكن إدارة الشركة عن بُعد في كثير من الحالات، ونساعدك في معرفة المتطلبات النظامية المرتبطة بنشاطك.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">هل تساعدون في فتح حساب بنكي للشركة؟ <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">نعم، نجهز المستندات اللازمة ونقدم الدعم الكامل خلال إجراءات فتح الحساب البنكي للشركة.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">ما هي الجهات الحكومية المطلوب التسجيل بها بعد التأسيس؟ <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">تشمل عادة الجهات الضريبية والتأمينات الاجتماعية وغيرها بحسب نشاط الشركة، ونتابع معك كل تسجيل بشكل منظم.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">هل يمكن تغيير النشاط التجاري بعد التأسيس؟ <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">نعم، يمكن تعديل أو إضافة أنشطة تجارية لاحقًا، ونساعدك في استكمال إجراءات التعديل لدى الجهات المختصة.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">ما الشكل القانوني الأنسب لشركتي؟ <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">يعتمد على حجم النشاط وعدد الشركاء وأهداف النمو، ونرشدك للخيار الأنسب بناءً على وضعك الاستثماري.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="contact">
+  <div class="wrap section">
+    <div class="final-cta-inner reveal">
+      <div class="final-blades">
+        <div class="blade" style="height:40%"></div>
+        <div class="blade" style="height:70%"></div>
+        <div class="blade" style="height:100%"></div>
+        <div class="blade" style="height:55%"></div>
+        <div class="blade" style="height:80%"></div>
+      </div>
+      <h2>جاهز لبدء نشاطك في السعودية؟</h2>
+      <p>دع فريق Veralex يتولى الإجراءات بينما تركز أنت على تنمية أعمالك وتحقيق أهدافك الاستثمارية.</p>
+      <a href="#" class="btn btn-light">احجز استشارتك المجانية</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-mark">
+          <div class="logo-blades">
+            <svg viewBox="0 0 38 38" fill="none"><rect x="9" y="14" width="3.4" height="16" rx="1.7" fill="rgba(255,255,255,.65)"/><rect x="15" y="8" width="3.4" height="22" rx="1.7" fill="#fff"/><rect x="21" y="11" width="3.4" height="19" rx="1.7" fill="rgba(255,255,255,.85)"/></svg>
+          </div>
+          <div class="logo-text">
+            <span class="name">veralex</span>
+            <span class="sub">BUSINESS SOLUTIONS</span>
+          </div>
+        </div>
+        <p>شريكك الموثوق لتأسيس وإدارة الأعمال في المملكة العربية السعودية.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3 8.75h3.88V21H3V8.75ZM9.5 8.75h3.7v1.68h.05c.52-.93 1.78-1.9 3.66-1.9 3.9 0 4.62 2.4 4.62 5.52V21h-3.88v-5.44c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H9.5V8.75Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3l7.5 9.5L3.3 21h2.3l6.1-7 5 7H21l-7.9-9.9L20.4 3h-2.3l-5.6 6.4L7.4 3H3Z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>المنتج</h4>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#services">خدماتنا</a></li>
+          <li><a href="#about">من نحن</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>الشركة</h4>
+        <ul>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#">سياسة الخصوصية</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>تواصل معنا</h4>
+        <p>info@veralex.sa</p>
+        <p>الرياض، المملكة العربية السعودية</p>
+        <a href="#contact" class="btn btn-ghost" style="margin-top:8px; border-color:rgba(255,255,255,0.25); color:#fff;">احجز استشارة</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Veralex Business Solutions. جميع الحقوق محفوظة.</span>
+      <span><a href="#">سياسة الخصوصية</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      faqItems.forEach(i=>{
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
