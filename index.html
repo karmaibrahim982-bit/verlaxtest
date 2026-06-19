@@ -117,6 +117,7 @@
     color:#fff;
   }
   .hero-bg{
+    will-change:transform;
     position:absolute; inset:0; z-index:0;
     background-image:
       linear-gradient(180deg, rgba(7,89,46,0.55) 0%, rgba(7,89,46,0.78) 55%, var(--c-900) 100%),
@@ -173,6 +174,11 @@
     background:#fff; color:var(--c-900);
     display:flex; align-items:center; justify-content:center;
     font-size:13px; font-weight:800; flex-shrink:0;
+    animation: star-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes star-pulse{
+    0%, 100%{transform:scale(1);}
+    50%{transform:scale(1.14);}
   }
   .review-badge .txt{font-size:12.5px; color:rgba(255,255,255,0.85); line-height:1.3;}
   .review-badge .txt b{color:#fff; font-size:13.5px;}
@@ -226,6 +232,11 @@
     width:42px; height:42px; border-radius:12px; flex-shrink:0;
     background:var(--c-50); color:var(--c-700);
     display:flex; align-items:center; justify-content:center;
+    transition:transform .35s ease, background .35s ease;
+  }
+  .trust-item:hover .trust-icon{
+    transform:scale(1.08) rotate(-4deg);
+    background:var(--c-900); color:#fff;
   }
   .trust-icon svg{width:20px; height:20px;}
   .trust-item h3{font-size:15.5px; margin-bottom:4px;}
@@ -400,6 +411,11 @@
   .testi-card{
     background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
     padding:28px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .testi-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 24px 44px -28px rgba(7,89,46,0.25);
   }
   .testi-quote{font-size:14.5px; color:var(--ink); line-height:1.75; margin-bottom:22px;}
   .testi-person{display:flex; align-items:center; gap:12px;}
@@ -503,6 +519,13 @@
   .reveal.in{opacity:1; transform:translateY(0);}
   .no-js .reveal, .reveal{animation: fallback-show 0.01s 1.2s forwards;}
   @keyframes fallback-show{to{opacity:1; transform:none;}}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none !important; animation:none !important; opacity:1 !important; transform:none !important;}
+    .blade{animation:none !important;}
+    .review-badge .stars-icon{animation:none !important;}
+    .hero-bg{transform:none !important;}
+    *{scroll-behavior:auto !important;}
+  }
 
   @media (max-width:980px){
     .nav-links{display:none;}
@@ -595,19 +618,19 @@
 
   <div class="hero-cards reveal in">
     <div class="hero-card">
-      <div class="n">150<span class="plus">+</span></div>
+      <div class="n"><span class="count-up" data-target="150">0</span><span class="plus">+</span></div>
       <div class="l">دولة مدعومة حول العالم</div>
     </div>
     <div class="hero-card">
-      <div class="n">100<span class="plus">%</span></div>
+      <div class="n"><span class="count-up" data-target="100">0</span><span class="plus">%</span></div>
       <div class="l">إجراءات أونلاين بالكامل</div>
     </div>
     <div class="hero-card">
-      <div class="n">0<span class="plus">+</span></div>
+      <div class="n"><span class="count-up" data-target="2.5" data-decimals="1">0</span><span class="plus">K+</span></div>
       <div class="l">شركة تأسست بنجاح</div>
     </div>
     <div class="hero-card">
-      <div class="n">0<span class="plus"> ساعة</span></div>
+      <div class="n"><span class="count-up" data-target="24">0</span><span class="plus"> ساعة</span></div>
       <div class="l">متوسط وقت الاستجابة</div>
     </div>
   </div>
@@ -666,10 +689,10 @@
       <h2>نفخر بالأرقام التي تمثل التزامنا بنجاح عملائنا ونمو استثماراتهم</h2>
     </div>
     <div class="stats-grid reveal">
-      <div class="stat-card"><div class="n">0K+</div><div class="l">الشركات المؤسَّسة</div></div>
-      <div class="stat-card"><div class="n">0%</div><div class="l">معدل رضا العملاء</div></div>
-      <div class="stat-card"><div class="n">0 ساعة</div><div class="l">متوسط وقت الاستجابة</div></div>
-      <div class="stat-card"><div class="n">0+</div><div class="l">الأنشطة والقطاعات المدعومة</div></div>
+      <div class="stat-card"><div class="n"><span class="count-up" data-target="2.5" data-decimals="1">0</span>K+</div><div class="l">الشركات المؤسَّسة</div></div>
+      <div class="stat-card"><div class="n"><span class="count-up" data-target="98">0</span>%</div><div class="l">معدل رضا العملاء</div></div>
+      <div class="stat-card"><div class="n"><span class="count-up" data-target="24">0</span> ساعة</div><div class="l">متوسط وقت الاستجابة</div></div>
+      <div class="stat-card"><div class="n"><span class="count-up" data-target="40">0</span>+</div><div class="l">الأنشطة والقطاعات المدعومة</div></div>
     </div>
   </div>
 </section>
@@ -956,7 +979,19 @@
     });
   });
 
-  const revealEls = document.querySelectorAll('.reveal');
+  /* reveal on scroll, staggered per sibling group */
+  const revealGroups = new Map();
+  document.querySelectorAll('.reveal').forEach(el=>{
+    const parent = el.parentElement;
+    if(!revealGroups.has(parent)) revealGroups.set(parent, []);
+    revealGroups.get(parent).push(el);
+  });
+  revealGroups.forEach(group=>{
+    group.forEach((el, i)=>{
+      el.style.transitionDelay = Math.min(i * 80, 360) + 'ms';
+    });
+  });
+
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -965,7 +1000,80 @@
       }
     });
   }, {threshold:0.12});
-  revealEls.forEach(el=>io.observe(el));
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* animated counters */
+  function animateCount(el){
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const value = target * eased;
+      el.textContent = decimals > 0 ? value.toFixed(decimals) : Math.round(value).toLocaleString('en-US');
+      if(p < 1) requestAnimationFrame(tick);
+      else el.textContent = decimals > 0 ? target.toFixed(decimals) : Math.round(target).toLocaleString('en-US');
+    }
+    requestAnimationFrame(tick);
+  }
+  const counterIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        animateCount(e.target);
+        counterIo.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.count-up').forEach(el=>counterIo.observe(el));
+
+  /* hero entrance: orchestrated load sequence */
+  window.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelectorAll('.hero-top-row, .hero h1, .hero .lead, .hero-ctas').forEach((el, i)=>{
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity .7s ease, transform .7s ease';
+      el.style.transitionDelay = (i * 110) + 'ms';
+      requestAnimationFrame(()=>{
+        setTimeout(()=>{
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 30);
+      });
+    });
+    const cards = document.querySelectorAll('.hero-card');
+    cards.forEach((el, i)=>{
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(14px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+      el.style.transitionDelay = (450 + i * 90) + 'ms';
+      requestAnimationFrame(()=>{
+        setTimeout(()=>{
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 30);
+      });
+    });
+  });
+  /* subtle parallax on hero background */
+  const heroBg = document.querySelector('.hero-bg');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(heroBg && !reduceMotion){
+    let ticking = false;
+    window.addEventListener('scroll', ()=>{
+      if(!ticking){
+        requestAnimationFrame(()=>{
+          const y = window.scrollY;
+          if(y < window.innerHeight){
+            heroBg.style.transform = 'translateY(' + (y * 0.18) + 'px) scale(1.06)';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, {passive:true});
+  }
 </script>
 
 </body>
