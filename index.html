@@ -535,6 +535,11 @@ footer{background:var(--g900);color:rgba(255,255,255,.7);padding-block:60px 26px
           </select>
         </div>
         <div class="field"><label data-ar="رسالتك (اختياري)" data-en="Message (optional)" for="ms">رسالتك (اختياري)</label><textarea id="ms" name="message" data-ph-ar="أخبرنا عن نشاطك أو استفسارك" data-ph-en="Tell us about your activity or question" placeholder="أخبرنا عن نشاطك أو استفسارك"></textarea></div>
+        <input type="hidden" id="tk_source" name="source">
+        <input type="hidden" id="tk_medium" name="medium">
+        <input type="hidden" id="tk_campaign" name="campaign">
+        <input type="hidden" id="tk_referrer" name="referrer">
+        <input type="hidden" id="tk_landing" name="landing">
         <button type="submit" class="btn btn-primary" data-ar="أرسل الطلب" data-en="Send request">أرسل الطلب</button>
         <p class="form-note" data-ar="بياناتك تُستخدم للتواصل بخصوص طلبك فقط." data-en="Your data is used only to contact you about your request.">بياناتك تُستخدم للتواصل بخصوص طلبك فقط.</p>
       </form>
@@ -669,6 +674,34 @@ footer{background:var(--g900);color:rgba(255,255,255,.7);padding-block:60px 26px
 
   /* form */
   var form=document.getElementById('consultForm'), ok=document.getElementById('formOk');
+
+  /* === تتبّع مصدر الزائر / lead source tracking === */
+  (function(){
+    var qs = new URLSearchParams(window.location.search);
+    var ref = document.referrer || '';
+    // المصدر من UTM أولاً، وإلا نستنتجه من الـ referrer
+    var src = qs.get('utm_source') || '';
+    if(!src){
+      var r = ref.toLowerCase();
+      if(r.indexOf('facebook')>-1 || r.indexOf('fb.')>-1) src='facebook';
+      else if(r.indexOf('instagram')>-1) src='instagram';
+      else if(r.indexOf('google')>-1) src='google';
+      else if(r.indexOf('t.co')>-1 || r.indexOf('twitter')>-1 || r.indexOf('x.com')>-1) src='twitter';
+      else if(r.indexOf('linkedin')>-1) src='linkedin';
+      else if(r.indexOf('tiktok')>-1) src='tiktok';
+      else if(r.indexOf('youtube')>-1) src='youtube';
+      else if(r.indexOf('wa.me')>-1 || r.indexOf('whatsapp')>-1) src='whatsapp';
+      else if(ref==='') src='مباشر';
+      else src='آخر';
+    }
+    var set=function(id,v){ var el=document.getElementById(id); if(el) el.value=v; };
+    set('tk_source', src);
+    set('tk_medium', qs.get('utm_medium') || '');
+    set('tk_campaign', qs.get('utm_campaign') || '');
+    set('tk_referrer', ref);
+    set('tk_landing', window.location.href);
+  })();
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('button[type="submit"]');
