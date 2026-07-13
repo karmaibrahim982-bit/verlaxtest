@@ -2,6 +2,23 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1003010832334071');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1003010832334071&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>فيرالكس | تأسيس الشركات والتراخيص في السعودية</title>
 <meta name="description" content="فيرالكس لحلول الأعمال — تأسيس الشركات واستخراج التراخيص وإدارة الإجراءات الحكومية في السعودية.">
@@ -654,9 +671,14 @@ footer{background:var(--g900);color:rgba(255,255,255,.7);padding-block:60px 26px
   var form=document.getElementById('consultForm'), ok=document.getElementById('formOk');
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    /* === ضعي رابط Google Apps Script هنا / put your webhook URL here ===
-    fetch('YOUR_WEBHOOK_URL',{method:'POST',body:new FormData(form)});
-    ================================================================ */
+    var btn = form.querySelector('button[type="submit"]');
+    if(btn){ btn.disabled = true; }
+    fetch('https://script.google.com/macros/s/AKfycbxiGjaSMp_q34_WdQx7rRkJIIIxs9nj3OeTeGQTZHj1a1vjs4Py_aK9JWstuVg84epX/exec',{
+      method:'POST',
+      mode:'no-cors',
+      body:new FormData(form)
+    }).catch(function(){});
+    if(window.fbq){ fbq('track','Lead'); }
     form.style.display='none'; ok.classList.add('show');
   });
 })();
